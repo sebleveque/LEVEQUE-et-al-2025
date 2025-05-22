@@ -61,9 +61,9 @@ rec_data
 dev.off()
 
 #defining plot window limit for figure 2 (a)
-par(fig=c(0,1,0.76,1), mar = c(0.1,3.75,0.5,6), new=TRUE, xpd= TRUE)
+par(fig=c(0,1,0.76,1), mar = c(0.1,5,0.5,9), new=TRUE, xpd= TRUE)
 #plotting figure 2 (a)
-barplot(t(rec_data),beside=F,col=c("black"),ylab="nb of records",las=1,horiz=F,
+barplot(t(rec_data),beside=F,col=c("black"),ylab="nb of records",las=1,horiz=F,cex.lab=1.15,
         
         ylim=c(0,200),xlim=c(0,18),space=0.2)
 text(18,180,"(a)",cex=1)
@@ -71,7 +71,7 @@ text(18,180,"(a)",cex=1)
 years<-c(1994,1995,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009)
 
 #defining plot window limit for figure 2 (b)
-par(fig=c(0,1,0,0.75), mar = c(2,3.75,0.5,6), new=TRUE, xpd= TRUE)
+par(fig=c(0,1,0,0.75), mar = c(2,5,0.5,9), new=TRUE, xpd= TRUE)
 #color palette setup
 coltotv4<-c("#E69F00","#009E73","#0072B2","#D55E00","#CC79A7","grey")
 coltotv5<-c("grey","#CC79A7","#CC79A7","#CC79A7","#CC79A7","#CC79A7","#CC79A7","#CC79A7","#CC79A7","#CC79A7",
@@ -103,7 +103,7 @@ barplot((prop.table(t(rev(stackbplot_bis1)),margin=2)),
         names=years,las=1,horiz=F,
         xlab="Years",
         ylim=c(0,1),
-        cex.names = 1.2,
+        cex.names = 1.2,cex.lab=1.15,
         xlim=c(0,18),
         space=0.2)
 text(18,.9,"(b)",cex=1)
@@ -111,11 +111,10 @@ text(18,.9,"(b)",cex=1)
 #legend color palette
 coltotv4<-c("#E69F00","#0072B2","#D55E00","#CC79A7","grey")
 #plotting legend
-legend(x="right",ncol=1,inset=c(-0.05,.4),
-       legend=c("Durusdinium","Symbiodinium","Breviolium","Cladocopium","Unidentified"),
-       cex=1.2,fill=coltotv4,bty="n")
-
-
+legend(x="right", ncol=1, inset=c(-0.075, .4),
+       legend=expression(italic("Durusdinium"), italic("Symbiodinium"), 
+                         italic("Breviolium"), italic("Cladocopium"), italic("Unidentified")),
+       cex=1.2, fill=coltotv4, bty="n")
 
 #########################
 ####FIGURE 3 SCRIPT #####
@@ -147,16 +146,16 @@ rec_data
 
 dev.off()
 #defining plot window limit for figure 3 (a)
-par(fig=c(0,1,0.76,1), mar = c(0.1,3.75,0.5,6), new=TRUE, xpd= TRUE)
+par(fig=c(0,1,0.76,1), mar = c(0.1,5,0.5,9), new=TRUE, xpd= TRUE)
 #plotting figure 3 (a)
-barplot(t(rec_data),beside=F,col=c("black"),ylab="nb of records",las=1,horiz=F,
+barplot(t(rec_data),beside=F,col=c("black"),ylab="nb of records",las=1,horiz=F,cex.lab=1.15,
         
         ylim=c(0,200),xlim=c(0,17),space=0.2)
 text(19,180,"(a)",cex=1)
 #legend(x="right",inset=c(-.01,.4), legend=c("nb of records"), cex=0.6,fill=c("orange"),bty="n")
 
 #defining plot window limit for figure 3 (b)
-par(fig=c(0,1,0,0.75), mar = c(2,3.75,0.5,6), new=TRUE, xpd= TRUE)
+par(fig=c(0,1,0,0.75), mar = c(2,5,0.5,9), new=TRUE, xpd= TRUE)
 
 #plotting figure 3 (b) + plotting legend
 tdat<-t(dat)
@@ -170,16 +169,20 @@ barplot((prop.table(tdat,margin=2)),
         xlab="Years",
         ylim=c(0,1),
         cex.names = 1.2,
+        cex.lab=1.15,
         xlim=c(0,17),
         space=0.2)
 text(19,1,"(b)",cex=1)
-legend(x="right",ncol=1,inset=c(-0.1,-0.1),
-       legend=c("Unknown","Acropora","Agaricia","Cladocora","Colpophyllia","Dendrogyra","Dichocoenia",   
-                "Diploria","Eusmilia","Favia","Isophyllia","Leptoseris","Madracis","Manicina",      
-                "Meandrina","Montastrea","Mussa","Mycetophyllia","Orbicella","Porites","Scolymia",      
-                "Siderastrea","Stephanocoenia"),
-       cex=1.2,fill=col,bty="n")
-
+legend(x = "right", ncol = 1, inset = c(-0.1, -0.1),
+       legend = expression("Unknown", italic("Acropora"), italic("Agaricia"), italic("Cladocora"),
+                           italic("Colpophyllia"), italic("Dendrogyra"), italic("Dichocoenia"),
+                           italic("Diploria"), italic("Eusmilia"), italic("Favia"),
+                           italic("Isophyllia"), italic("Leptoseris"), italic("Madracis"),
+                           italic("Manicina"), italic("Meandrina"), italic("Montastrea"),
+                           italic("Mussa"), italic("Mycetophyllia"), italic("Orbicella"),
+                           italic("Porites"), italic("Scolymia"), italic("Siderastrea"),
+                           italic("Stephanocoenia")),
+       cex = 1.2, fill = col, bty = "n")
 
 
 #########################
@@ -219,6 +222,7 @@ bar_positions <- barplot(
   xlab = "Years", # X-axis label
   ylim = c(0, 1), # Y-axis limits
   cex.names = 1.2, # Size of axis labels
+  cex.lab=1.15,
   xlim = c(0, 18), # X-axis limits
   space = 0.2, # Space between bars
   border = NA # No borders on bars
@@ -226,14 +230,18 @@ bar_positions <- barplot(
 
 #plotting legend
 legend(
-  x = "right", # Position of the legend
-  ncol = 1, # Number of columns in the legend
-  inset = c(-0.1, 0), # Inset of the legend
-  legend = c("Acropora", "Agaricia", "Colpophyllia", "Diploria", "Montastrea", "Orbicella", "Scolymia", "Siderastrea"), # Legend text
-  cex = 1.5, # Size of legend text
-  fill = Ducol, # Colors for legend
-  bty = "n" # No box around the legend
+  x = "right", 
+  ncol = 1, 
+  inset = c(-0.1, 0), 
+  legend = expression(
+    italic("Acropora"), italic("Agaricia"), italic("Colpophyllia"), italic("Diploria"),
+    italic("Montastrea"), italic("Orbicella"), italic("Scolymia"), italic("Siderastrea")
+  ), 
+  cex = 1.5, 
+  fill = Ducol, 
+  bty = "n"
 )
+
 
 #plotting "NA" text for years missing data
 na_years <- c(1994, 1995,1998, 2008, 2009)
@@ -374,7 +382,7 @@ bdata
 ##### Stacked barplot displaying nb of bleaching events and nb of severe bleaching events
 dev.off()
 #defining plot window limit for figure 5(a)
-par(fig=c(0,1,0.76,1), mar = c(0.1,3.75,0.5,2), new=TRUE)
+par(fig=c(0,1,0.76,1), mar = c(0.1,5,0.5,2), new=TRUE)
 
 #plotting figure 5(a) + legend
 barplot(t(bdata),
@@ -384,6 +392,7 @@ barplot(t(bdata),
         las=1,
         horiz=F,
         border=NA,
+        cex.lab=1.15,
         ylim=c(0,20),
         xlim=c(0,7),
         space=0.2)
@@ -398,7 +407,7 @@ text(7,18,"(a)",cex=1)
 years<-c(2003,2004,2005,2006,2007)
 
 #defining plot window limit for figure 5(b)
-par(fig=c(0,1,0,0.75), mar = c(2,3.75,0.5,2), new=TRUE)
+par(fig=c(0,1,0,0.75), mar = c(2,5,0.5,2), new=TRUE)
 
 #plotting figure 5(b) + legend
 barplot((prop.table(dat,margin=2)),
@@ -412,16 +421,18 @@ barplot((prop.table(dat,margin=2)),
         xlab="Years",
         ylim=c(0,1),
         cex.names = 1.2,
+        cex.lab=1.15,
         xlim=c(0,7),
         space=0.2)
-legend(x="right",
-       ncol=1,
-       inset=c(0.01,.4),
-       legend=c("Durusdinium","Symbiodinium","Breviolium","Cladocopium"),
-       cex=1.2,
-       fill=c("#E69F00","#0072B2","#D55E00","#CC79A7"),
-       bty="n")
-inset=c(-.1,.4)
+
+legend(x = "right",
+       ncol = 1,
+       inset = c(0.01, 0.4),  # or c(-0.1, 0.4) for further out
+       legend = expression(italic("Durusdinium"), italic("Symbiodinium"),
+                           italic("Breviolium"), italic("Cladocopium")),
+       cex = 1.2,
+       fill = c("#E69F00", "#0072B2", "#D55E00", "#CC79A7"),
+       bty = "n")
 
 text(7,.95,"(b)",cex=1)
 
